@@ -36,4 +36,4 @@ README.md
 capstone/views/connection.py
 
 capstone/templates/report/gift_cards.html
-data/zipcodes.pickle
+data2.0/

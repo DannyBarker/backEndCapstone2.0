@@ -34,11 +34,11 @@ def create_map(id_for_map):
     final_df = final_df[final_df.company_id==int(id_for_map)]
     final_df = final_df.groupby("zipcode")["amount_donated"].sum().reset_index()
 
-    geo_df = pd.read_json("./data/USCities.json", orient="records")
+    geo_df = pd.read_json("./data2.0/USCities.json", orient="records")
 
     my_crs = "{'init': 'epsg:4326'}"
 
-    zipcodes_pickle = pd.read_pickle("./data/zipcodes.pickle")
+    zipcodes_pickle = pd.read_pickle("./data2.0/zipcodes.pickle")
     zipcodes_pickle_gdf = gpd.GeoDataFrame(zipcodes_pickle, crs=my_crs, geometry=zipcodes_pickle.geometry)
 
     geo_df = geo_df[['latitude', 'longitude', 'zip_code', 'city']]

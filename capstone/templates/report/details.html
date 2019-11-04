@@ -17,10 +17,46 @@
   </div>
   </section>
   <hr>
-  <section>
-  <div class="iframe-container">
-    <iframe src="{% url 'capstone:map' %}" allowfullscreen></iframe>
-  </div>
+  <section class="map-details-section">
+  <h3>Map Report</h3>
+    <div id="loadingScreen">
+      <div>
+      <div class="spinner-grow text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      </div>
+
+      <p>Loading Map Report</p>
+
+      <div>
+      <div class="spinner-grow text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      <div class="spinner-grow text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+      </div>
+    </div>
+    <div class="iframe-container">
+      <iframe id="mapFrame" title="Map Report" aria-hidden="true" src="{% url 'capstone:map' %}" allowfullscreen></iframe>
+    </div>
   </section>
   </div>
 {% endblock %}
+
+{% block scripts %}
+<script>
+document.getElementById("mapFrame").onload = () => {
+  document.getElementById("loadingScreen").style.display = "none"
+}
+</script>
+  {% endblock %}
