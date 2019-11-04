@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Capstone</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="static/styles/main.css" />
+		<noscript><link rel="stylesheet" href="static/styles/noscript.css" /></noscript>
+		<link rel="stylesheet" href="static/styles/format_home.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul>
+							<li><a href="#intro">Home</a></li>
+							{% if user.is_authenticated %}
+              <li><a href="#one">Account</a></li>
+              <li><a href="{% url 'capstone:logout' %}">Logout</a></li>
+            {% else %}
+              <li><a href="#one">Donate</a></li>
+              <li><a href="#three">Register/Log In</a></li>
+            {% endif %}
+						</ul>
+					</nav>
+				</div>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Intro -->
+					<section id="intro" class="wrapper style4 fullscreen fade-up">
+						<div class="inner">
+							<h1>Capstone</h1>
+						</div>
+					</section>
+
+				<!-- One -->
+					<section id="one" class="wrapper style2 spotlights {% if not user.is_authenticated %}donate_style{% endif %}">
+            <section>
+              <div class="content">
+								<div class="inner">
+									<h2>Donate</h2>
+                  {% if user.is_authenticated %}
+									<p>Donate your unwanted and used giftcards to charity!</p>
+									<ul class="actions">
+										<li><a href="{% url 'capstone:donation_form' %}" class="button">Donate</a></li>
+									</ul>
+                  {% else %}
+                  <p><a href="#three" class="button">Log In</a> or <a href="#three" class="button">Register</a> to donate!</p>
+                  {% endif %}
+								</div>
+							</div>
+						</section>
+          {% if user.is_authenticated %}
+						<section>
+							<div class="content">
+								<div class="inner">
+									<h2>Past Donations</h2>
+                  <p>See all your past donations!</p>
+									<ul class="actions">
+										<li><a href="{% url 'capstone:donations' %}" class="button">See Donations</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+						<section>
+							<div class="content">
+								<div class="inner">
+									<h2>Report</h2>
+									<p>See how much money has come from your company's giftcards!</p>
+									<ul class="actions">
+										<li><a href="{% url 'capstone:report' %}" class="button">See Report</a></li>
+									</ul>
+								</div>
+							</div>
+						</section>
+          {% endif %}
+					</section>
+
+          {% if not user.is_authenticated %}
+          <section id="three" class="wrapper style3 fade-up">
+						<div class="inner">
+							<div class="split style1">
+								<section>
+							<h2>Register</h2>
+									<form method="post" action="{% url 'capstone:register' %}">
+										<div class="fields">
+											<div class="field">
+												<label for="username">Username: </label>
+                        <input id="new_username" type="text" name="username" autocomplete="username" placeholder="Username" required>
+											</div>
+											<div class="field half">
+												<label for="first_name">First Name: </label>
+                        <input id="first_name" type="text" name="first_name" placeholder="First Name" required>
+											</div>
+											<div class="field half">
+												<label for="last_name">Last Name: </label>
+                        <input id="last_name" type="text" name="last_name" placeholder="Last Name" required>
+											</div>
+											<div class="field half">
+												<label for="phone_number">Phone Number: </label>
+                        <input id="phone_number" type="text" name="phone_number" placeholder="Phone Number" required>
+											</div>
+											<div class="field half">
+												<label for="email">Email: </label>
+                        <input id="email" type="text" name="email" autocomplete="username" placeholder="jon@email.com" required>
+											</div>
+											<div class="field">
+												<label for="address">Address: </label>
+                        <input id="address" type="text" name="address" placeholder="Address" required>
+											</div>
+											<div class="field">
+												<label for="city">City: </label>
+                        <input id="city" type="text" name="city" placeholder="City" required>
+											</div>
+											<div class="field half">
+												<label for="state">State: </label>
+                        <input id="state" type="text" name="state" placeholder="TN" required>
+											</div>
+											<div class="field half">
+												<label for="zipcode">Zipcode: </label>
+                        <input id="zipcode" type="text" name="zipcode" maxlength="5" placeholder="37027" required>
+											</div>
+											<input id="userType" type="hidden" name="userType" value="1">
+											<div class="field">
+												<label for="password">Password: </label>
+                        <input id="new_password" type="password" autocomplete="current-password" name="password" placeholder="Password" required>
+											</div>
+                      <div class="field login_button">
+                        <input type="submit" value="Register" />
+                      </div>
+										</div>
+									</form>
+								</section>
+                <section>
+                <h2>Login</h2>
+                {% if messages %}
+                  {% for message in messages %}
+                    <p>{{ message }}</p>
+                  {% endfor %}
+                {% endif %}
+                <form method="post" action="{% url 'capstone:login' %}">
+                  {% csrf_token %}
+                  <div class="fields">
+                    <div class="field">
+                      <label for="username">Username: </label>
+                      <input id="username" type="text" name="username" autocomplete="username" placeholder="Username" required>
+                    </div>
+                    <div class="field">
+                      <label for="password">Password: </label>
+                      <input id="password" type="password" name="password" autocomplete="current-password" placeholder="Password" required>
+                    </div>
+                    <div class="field login_button">
+                      <input type="submit" value="Log In" />
+                    </div>
+                  </div>
+                </form>
+              </section>
+							</div>
+						</div>
+					</section>
+          {% endif %}
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="static/scripts/jquery.min.js"></script>
+			<script src="static/scripts/jquery.scrollex.min.js"></script>
+			<script src="static/scripts/jquery.scrolly.min.js"></script>
+			<script src="static/scripts/browser.min.js"></script>
+			<script src="static/scripts/breakpoints.min.js"></script>
+			<script src="static/scripts/util.js"></script>
+			<script src="static/scripts/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,31 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+      <section class="donation-details-section">
+        <h2>{{ donation.giftcard.company.name }}</h2>
+        <h2><font size="3">{{ donation.payment_date }}</font></h2>
+      </section>
+
+<hr>
+
+      <section class="donation-details-section">
+        <br>
+        <div>Amount: ${{ donation.amount_donated|floatformat:2 }}</div>
+        <br>
+        <div>Card: {{ donation.giftcard.barcode|slice:'1' }}***{{ donation.giftcard.barcode|slice:'9:14' }}</div>
+        <br>
+        <div>Description: {{ donation.description }}</div>
+        <br>
+    </section>
+
+<hr>
+
+    <section class="donation-details-section">
+      <form action="{% url 'capstone:donation_edit_form' donation.id %}" method="GET">
+        {% csrf_token %}
+        <div class="field">
+        <input type="submit" value="Edit" />
+        </div>
+      </form>
+    </section>
+{% endblock %}

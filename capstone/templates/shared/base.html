@@ -1,0 +1,61 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Capstone</title>
+
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="../../static/styles/main.css" />
+		<noscript><link rel="stylesheet" href="../../static/styles/noscript.css" /></noscript>
+    <link rel="stylesheet" href="../../static/styles/donation_card.css" />
+    <link rel="stylesheet" href="../../static/styles/format_home.css" />
+
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+  <header id="header">
+		<a href="{% url 'capstone:home' %}" class="title">Capstone</a>
+    <nav id="site-nav">
+      <ul>
+          <li><a href="{% url 'capstone:home' %}">Home</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'capstone:donation_form' %}">Donate</a></li>
+          <li><a href="{% url 'capstone:donations' %}">Past Donations</a></li>
+          {% if user.user_customer.userType.id == 2 %}
+          <li><a href="{% url 'capstone:report' %}">Report</a></li>
+          {% endif %}
+          <li><a href="{% url 'capstone:logout' %}">Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'capstone:login' %}">Log In</a></li>
+          <li><a href="{% url 'capstone:register' %}">Register</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+		</header>
+
+  <div id="wrapper">
+    <section id="main" class="wrapper">
+			<div class="inner">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </section>
+  </div>
+
+  <script src="../../static/scripts/jquery.min.js"></script>
+  <script src="../../static/scripts/jquery.scrollex.min.js"></script>
+  <script src="../../static/scripts/jquery.scrolly.min.js"></script>
+  <script src="../../static/scripts/browser.min.js"></script>
+  <script src="../../static/scripts/breakpoints.min.js"></script>
+  <script src="../../static/scripts/util.js"></script>
+  <script src="../../static/scripts/main.js"></script>
+  {% block scripts %}
+  {% endblock %}
+</body>
+
+</html>

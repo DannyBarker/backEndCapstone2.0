@@ -1,0 +1,60 @@
+{% extends 'shared/base.html' %}
+
+{% block content %}
+
+
+  {% if form.id is not None %}
+    <h2>Edit Description</h2>
+
+    <form action="{% url 'capstone:donation' form.id %}" method="post">
+    {% csrf_token %}
+    <div class="fields">
+  {% else %}
+        <h2>Donate Form</h2>
+
+        {% if messages %}
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        {% endif %}
+
+    <form action="{% url 'capstone:donations' %}" method="post">
+    {% csrf_token %}
+    <div class="fields">
+       <div class="field">
+        <label for="barcode">Barcode: </label>
+        <input id="barcode" type="text" name="barcode" placeholder="Barcode" value="{{form.barcode}}" required>
+      </div>
+      <div class="field">
+        <label for="company_card_name">Company: </label>
+        <select id="company_card_name" type="text" name="company_card_name">
+
+          {% for company in all_companies %}
+          <option {% if form.company_card_name == company.id|slugify %} selected {% endif %} value="{{ company.id }}">
+            {{ company.name }}</option>
+          {% endfor %}
+
+        </select>
+      </div>
+  {% endif %}
+
+      <div class="field">
+        <label for="description">Description: </label>
+        <textarea id="description" type="text" name="description" placeholder="Why are you Donating?" >{{form.description}}</textarea>
+      </div>
+    </div>
+
+      {% if form.id is not None %}
+        <input type="hidden" name="actual_method" value="PUT">
+        <div class="field login_button">
+        <input type="submit" value="Update" />
+        </div>
+      {% else %}
+        <div class="field login_button">
+        <input type="submit" value="Create" />
+        </div>
+      {% endif %}
+
+    </form>
+
+{% endblock %}

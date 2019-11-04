@@ -1,0 +1,30 @@
+[
+  {
+      "model": "capstone.company",
+      "pk": 1,
+      "fields": {
+          "name": "Shannon's Hair Shop"
+      }
+  },
+  {
+      "model": "capstone.company",
+      "pk": 2,
+      "fields": {
+          "name": "McDonalds"
+      }
+  },
+  {
+    "model": "capstone.company",
+    "pk": 3,
+    "fields": {
+        "name": "Forever 21"
+    }
+  },
+  {
+    "model": "capstone.company",
+    "pk": 4,
+    "fields": {
+        "name": "Nike"
+    }
+  }
+]

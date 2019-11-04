@@ -1,0 +1,36 @@
+{% extends 'shared/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <h2>Donations</h2>
+
+    {% if all_donations|length > 0 %}
+    <p>{{user_name}}, you have donated ${{total_donated|floatformat:2}} so far!</p>
+
+        <div class="donation_card_list">
+        <div class="wrapper_card">
+        <div class="cols_card">
+      {% for donation in all_donations %}
+          <div class="col_card" onpassive="this.classList.toggle('hover');">
+            <div class="container_card">
+              <div class="front_card">
+                <div class="inner_card">
+                  <p>{{ donation.giftcard.company.name }}</p>
+                  <p><font size="4">Card: </font><font size="3">{{ donation.giftcard.barcode|slice:'1' }}***{{ donation.giftcard.barcode|slice:'9:14' }}</font></p>
+                </div>
+              </div>
+            <div class="back_card">
+              <div class="inner_card">
+                <p>Amount: $ {{ donation.amount_donated|floatformat:2 }} </p>
+								<p class="login_button"><a href="{% url 'capstone:donation' donation.id %}" class="button">Details</a></p>
+              </div>
+            </div>
+          </div>
+      </div>
+      {% endfor %}
+			  </div>
+      </div>
+    {% else %}
+      <div>You have not made any donations. Make some <a href="{% url 'capstone:donation_form' %}" class="button">here!</a></div>
+    {% endif %}
+{% endblock %}

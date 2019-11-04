@@ -1,0 +1,16 @@
+[
+  {
+      "model": "capstone.userType",
+      "pk": 1,
+      "fields": {
+          "type": "non-company"
+      }
+  },
+  {
+      "model": "capstone.userType",
+      "pk": 2,
+      "fields": {
+          "type": "company"
+      }
+  }
+]

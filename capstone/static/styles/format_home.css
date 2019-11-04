@@ -1,0 +1,73 @@
+.donate_style {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-top: 35%;
+  padding-bottom: 35%;
+}
+
+.login_button{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+section.donation-details-section{
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+}
+
+section.report-details-section{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+section.report-details-section div{
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+}
+
+.iframe-container {
+  overflow: hidden;
+  padding-top: 56.25%;
+  position: relative;
+}
+
+.iframe-container iframe {
+  border: 0;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+.iframe-container-4x3 {
+  padding-top: 75%;
+}
+
+section.donation-details-section div, section.donation-details-section h2{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+form{
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+}
+form div div{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+input, textarea{
+  text-align: center;
+}
+
+select{
+  text-align-last: center;
+}
