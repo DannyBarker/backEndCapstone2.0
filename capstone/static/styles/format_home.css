@@ -71,3 +71,9 @@ input, textarea{
 select{
   text-align-last: center;
 }
+
+#loadingScreen{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
