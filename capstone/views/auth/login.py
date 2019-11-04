@@ -21,5 +21,4 @@ def login_user(request):
         else:
             # Bad login details were provided. So we can't log the user in.
             # print("Invalid login details: {}, {}".format(form_data['username'], password=form_data['password']))
-            messages.info(request, "Invalid login details supplied.")
             return HttpResponse(status=204)
