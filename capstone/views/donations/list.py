@@ -44,9 +44,10 @@ def Donation_List(request):
                 giftcard=new_card,
                 amount_donated=new_card.remaining_balance
                 )
-                if form_data["description"] != "":
-                    new_card.description = form_data["description"]
-                    new_card.save()
+
+                if form_data["description"]:
+                    new_payment.description = form_data["description"]
+                    new_payment.save()
 
                 new_card.remaining_balance = new_card.remaining_balance - new_payment.amount_donated
                 new_card.save()
