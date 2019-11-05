@@ -63,7 +63,7 @@ def create_map(id_for_map):
     for i in range(len(final_zip_area)):
         gs = folium.GeoJson(final_zip_area.iloc[i:i+1])
         label = '{}: ${}'.format(
-            final_zip_area['zipcode'][i], final_zip_area['amount_donated'][i])
+            final_zip_area['zipcode'][i], str(round(float(final_zip_area['amount_donated'][i]), 2)))
         folium.Popup(label).add_to(gs)
         gs.add_to(base_map)
 
