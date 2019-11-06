@@ -15,10 +15,6 @@ class Customer(models.Model):
     userType = models.ForeignKey(UserType, on_delete=models.DO_NOTHING, related_name="category")
     company = models.ForeignKey(Company, on_delete=models.DO_NOTHING, related_name="company_user", default=None, blank=True, null=True)
 
-    # @property
-    # def full_name(self):
-    #     return f"{self.user.first_name} {self.user.last_name}"
-
 
     class Meta:
         verbose_name = ("customer")

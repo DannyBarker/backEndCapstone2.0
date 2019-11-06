@@ -19,6 +19,4 @@ def login_user(request):
             return redirect(reverse('capstone:donation_form'))
 
         else:
-            # Bad login details were provided. So we can't log the user in.
-            # print("Invalid login details: {}, {}".format(form_data['username'], password=form_data['password']))
             return HttpResponse(status=204)

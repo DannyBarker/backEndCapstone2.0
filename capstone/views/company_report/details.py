@@ -32,21 +32,3 @@ def Report_Details(request):
         company_report = make_report(company_id)
         template_name = 'report/details.html'
         return render(request, template_name, company_report)
-
-    # elif request.method == 'POST':
-    #     form_data = request.POST
-
-    #     # Check if this POST is for editing a book
-    #     if (
-    #         "actual_method" in form_data
-    #         and form_data["actual_method"] == "PUT"
-    #     ):
-    #         if form_data["description"] != "":
-    #             donation.description = form_data["description"]
-    #         else:
-    #             donation.description = "I donated!"
-
-
-    #         donation.save()
-
-    #         return redirect(reverse('capstone:donations'))
