@@ -16,6 +16,24 @@ The next steps are for setting up the database:
         2. userType
         3. giftCard
 
+For this app, the map part of a company report will not work, because the data directory was not added to the repo. You will need to take out 
+
+        <div class="iframe-container">
+            <iframe id="mapFrame" title="Map Report" aria-hidden="true" src="{% url 'capstone:map' %}" allowfullscreen></iframe>
+        </div>
+  
+ and
+        
+        {% block scripts %}
+            <script>
+                document.getElementById("mapFrame").onload = () => {
+                  document.getElementById("loadingScreen").style.display = "none"
+                }
+            </script>
+        {% endblock %}
+from
+         ```"capstone/templates/report/details.html"```
+  
 Now that your database is set up all you have to do is run the command:
 
 ```python manage.py runserver```
