@@ -1,4 +1,4 @@
-# backEndCapstone2.0
+# Back-End Capstone
 There are a couple steps to run this server. After you clone the repo, cd into it and perform the following steps:
 1. Run this command: ```python -m venv backendEnv```
 2. Next, run command: ```source ./backendEnvbin/activate```
