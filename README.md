@@ -9,10 +9,12 @@ The next steps are for setting up the database:
 1. In the root project directory run the command: ```python manage.py makemigrations```
 2. Next run: ```python manage.py migrate```
 3. Then run: ```python manage.py loaddata <fixture file name minus .json>```
-load order should be:
-1. company
-2. userType
-3. giftCard
+    
+    Load order should be:
+       
+        1. company
+        2. userType
+        3. giftCard
 
 Now that your database is set up all you have to do is run the command:
 
