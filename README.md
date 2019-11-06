@@ -10,9 +10,9 @@ The next steps are for setting up the database:
 2. Next run: ```python manage.py migrate```
 3. Then run: ```python manage.py loaddata <fixture file name minus .json>```
 load order should be:
-company
-userType
-giftCard
+1. company
+2. userType
+3. giftCard
 
 Now that your database is set up all you have to do is run the command:
 
